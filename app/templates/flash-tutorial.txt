@@ -1,0 +1,32 @@
+pip install flask
+set FLASK_APP=microblog.py
+flash run
+pip install flask-wtf
+
+// form
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
+
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Sign In')
+
+pip install flask-sqlalchemy
+pip install flask-migrate
+
+flask db init
+flask db migrate -m "users table"
+flask db upgrade
+
+ pip install flask-login
+
+ >>> from app import db
+>>> from app.models import User, Post
+Start by creating a new user:
+
+>>> u = User(username='john', email='john@example.com')
+>>> db.session.add(u)
+>>> db.session.commit()
